@@ -93,8 +93,9 @@ function StepList(props) {
 			{
 				header: 'Status',
 				accessorKey: 'status',
+				size: 240,
 				Cell: ({ cell }) => (
-					<Button size="small" variant="outlined" sx={{ color: cell.getValue()?.color }}>
+					<Button size="small" variant="outlined" sx={{ color: cell.getValue()?.color, width: 200 }}>
 						{cell.getValue()?.name}
 					</Button>
 				),

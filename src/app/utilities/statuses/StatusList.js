@@ -1,11 +1,10 @@
 import React from 'react';
 import format from 'date-fns/format';
 import { useDispatch, useSelector } from 'react-redux';
+import { Box, IconButton, Button, Typography } from '@mui/material';
 import { openEditStatusDialog, removeStatus, selectStatuses } from './store/statusSlice';
 import MuiTable from '@/components/core/Table/MuiTable';
-import { Typography } from '@mui/material';
 import SvgIcon from '@/components/core/SvgIcon';
-import { Box, IconButton, Button } from '@mui/material';
 
 function StatusList(props) {
 	const dispatch = useDispatch()
@@ -23,6 +22,16 @@ function StatusList(props) {
 				header: 'Name',
 				accessorKey: 'name',
 				size: 120,
+			},
+			{
+				header: 'Color',
+				accessorKey: 'color',
+				size: 120,
+				Cell: ({ cell }) => (                  
+					<Button size="small" variant="outlined" sx={{ color : cell.getValue(), width: 200 }}>
+						  { cell.getValue() }
+					  </Button>
+				  ),
 			},
 			{
 				header: 'Created At',

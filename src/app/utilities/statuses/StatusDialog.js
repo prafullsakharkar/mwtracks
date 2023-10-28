@@ -28,7 +28,6 @@ import {
 const defaultFormState = {
 	name: '',
 	color: '#aabbcc',
-	status_type: '',
 };
 
 function StatusDialog(props) {
@@ -128,26 +127,13 @@ function StatusDialog(props) {
 						<div className="flex">
 							<TextField
 								className="mb-24"
-								label="Type"
-								id="status_type"
-								name="status_type"
-								value={form.status_type}
-								onChange={handleChange}
-								variant="outlined"
-								fullWidth
-							/>
-						</div>
-
-						<div className="flex flex-1">
-							<TextField
-								className="mb-24"
-								label="Color"
+								// label="Color"
 								id="color"
 								name="color"
 								value={form.color}
 								onChange={handleChange}
 								variant="outlined"
-								sx={{ backgroundColor: form.color }}
+								sx={{ backgroundColor: form.color}}
 							/>
 						</div>
 						<div className="flex flex-1">
