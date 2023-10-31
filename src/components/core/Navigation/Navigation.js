@@ -20,6 +20,8 @@ const inputGlobalStyles = (
   <GlobalStyles
     styles={(theme) => ({
       '.popper-navigation-list': {
+        maxHeight: 440,
+        overflow: 'auto',
         '& .core-list-item': {
           padding: '8px 12px 8px 12px',
           height: 40,
@@ -30,8 +32,9 @@ const inputGlobalStyles = (
         },
         '&.dense': {
           '& .core-list-item': {
-            minHeight: 32,
-            height: 32,
+            minHeight: 24,
+            height: 24,
+            minWidth: 120,
             '& .core-list-item-text': {
               padding: '0 0 0 8px',
             },
@@ -53,8 +56,8 @@ registerComponent('horizontal-group', NavHorizontalGroup);
 registerComponent('horizontal-collapse', NavHorizontalCollapse);
 registerComponent('horizontal-item', NavHorizontalItem);
 registerComponent('horizontal-link', NavHorizontalLink);
-registerComponent('vertical-divider', () => <Divider className="my-16" />);
-registerComponent('horizontal-divider', () => <Divider className="my-16" />);
+registerComponent('vertical-divider', () => <Divider className="my-8" />);
+registerComponent('horizontal-divider', () => <Divider className="my-8" />);
 
 function Navigation(props) {
   const options = _.pick(props, [

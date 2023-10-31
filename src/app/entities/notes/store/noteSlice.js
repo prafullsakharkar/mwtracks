@@ -95,10 +95,8 @@ export const updateMultipleNotes = createAsyncThunk(
 export const removeNote = createAsyncThunk(
 	'noteApp/note/removeNote',
 	async (id, { dispatch, getState }) => {
-		const response = await axios.delete(url + id + '/');
-		const data = await response.data;
-		if (data) return id;
-
+		const response_id = await axios.delete(url + id + '/').then(() => {return id});
+		return response_id
 	}
 );
 

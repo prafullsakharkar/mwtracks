@@ -5,6 +5,7 @@ import Grow from '@mui/material/Grow';
 import IconButton from '@mui/material/IconButton';
 import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
+import {Grid, ImageListItem, Typography, ImageListItemBar} from '@mui/material';
 import Paper from '@mui/material/Paper';
 import clsx from 'clsx';
 import PropTypes from 'prop-types';
@@ -76,7 +77,6 @@ function NavHorizontalCollapse(props) {
                 <StyledListItem
                   button
                   className={clsx(
-                    'core-list-item',
                     opened && 'open',
                     isUrlInChildren(item, props.location.pathname) && 'active'
                   )}
@@ -91,22 +91,50 @@ function NavHorizontalCollapse(props) {
                   sx={item.sx}
                   disabled={item.disabled}
                 >
-                  {item.icon && (
-                    <SvgIcon
-                      color="action"
-                      className={clsx('core-list-item-icon shrink-0', item.iconClass)}
-                    >
-                      {item.icon}
-                    </SvgIcon>
-                  )}
+                  {item.thumbnail ? (
+                    <Grid className=''>
+                      <Paper
+                        sx={{
+                          height: 60,
+                          width: 120,
+                          // backgroundColor: (theme) =>
+                          //   theme.palette.mode === 'dark' ? '#1A2027' : '#fff',
+                        }}
+                      >
+                        <ImageListItem key={item.title} className="cursor-pointer">
+                          <img
+                            src={item.thumbnail}
+                            alt={item.title}
+                            className="max-w-120 max-h-60 rounded-16"
+                            onClick={() => history.push("/entity/project/" + item.id + "/overview")}
+                            srcSet={item.thumbnail}
+                            loading="lazy"
+                          />
+                          <ImageListItemBar
+													  className="h-24 rounded-16 font-bold text-center"
+													  title={item.title}
+												  />
+                        </ImageListItem>
+                      </Paper>
+                    </Grid>
+                  ) : (<>
+                    {item.icon && (
+                      <SvgIcon
+                        color="action"
+                        className={clsx('core-list-item-icon shrink-0', item.iconClass)}
+                      >
+                        {item.icon}
+                      </SvgIcon>
+                    )}
 
-                  <ListItemText
-                    className="core-list-item-text"
-                    primary={item.title}
-                    classes={{ primary: 'text-13 truncate' }}
-                  />
+                    <ListItemText
+                      className="core-list-item-text"
+                      primary={item.title}
+                      classes={{ primary: 'text-13 truncate' }}
+                    />
 
-                  {item.badge && <NavBadge className="mx-4" badge={item.badge} />}
+                    {item.badge && <NavBadge className="mx-4" badge={item.badge} />}
+                  </>)}
                   <IconButton
                     disableRipple
                     className="w-16 h-16 ltr:ml-4 rtl:mr-4 p-0"

@@ -84,11 +84,14 @@ export const updateMultipleSequences = createAsyncThunk(
 export const removeSequence = createAsyncThunk(
 	'sequenceApp/sequence/removeSequence',
 	async (id, { dispatch, getState }) => {
-		const response = await axios.delete(url + id + '/');
-		const data = await response.data;
-
-		if (data) return id;
-
+		return await axios.delete(url + id + '/')
+			.then((response) => {
+				console.info(response)
+				return id;
+			})
+			.catch((response) => {
+				console.error(response)
+			})
 	}
 );
 

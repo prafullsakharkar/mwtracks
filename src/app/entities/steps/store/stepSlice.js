@@ -80,9 +80,14 @@ export const updateMultipleSteps = createAsyncThunk(
 export const removeStep = createAsyncThunk(
 	'stepApp/step/removeStep',
 	async (id, { dispatch, getState }) => {
-		const response = await axios.delete(url + id + '/');
-		const data = await response.data;
-		if (data) return id;
+		return await axios.delete(url + id + '/')
+			.then((response) => {
+				console.info(response)
+				return id;
+			})
+			.catch((response) => {
+				console.error(response)
+			})
 	}
 );
 

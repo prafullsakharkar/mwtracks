@@ -46,12 +46,6 @@ function UserMenu(props) {
             url: '/entity/project/' + item.uid + '/overview',
           },
           {
-            id: item.uid + '-assign-task',
-            title: 'Task Assignment',
-            type: 'item',
-            url: '/entity/project/' + item.uid + '/assign-task',
-          },
-          {
             id: item.uid + '-assets',
             title: 'Assets',
             type: 'item',
@@ -92,12 +86,6 @@ function UserMenu(props) {
             title: 'Versions',
             type: 'item',
             url: '/entity/project/' + item.uid + '/versions',
-          },
-          {
-            id: item.uid + '-publishes',
-            title: 'Publishes',
-            type: 'item',
-            url: '/entity/project/' + item.uid + '/publishes',
           },
           {
             id: item.uid + '-notes',

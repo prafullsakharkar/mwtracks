@@ -105,8 +105,7 @@ export const updateUserTasks = createAsyncThunk(
 export const removeUserTask = createAsyncThunk(
 	'taskApp/tasks/updateTaskUser',
 	async (id, { dispatch, getState }) => {
-		await axios.delete('/api/v1/entity/usertasks/' + id + '/');
-		return id
+		return await axios.delete('/api/v1/entity/usertasks/' + id + '/').then(() => {return id});
 	}
 );
 
@@ -150,9 +149,14 @@ export const updateMultipleTasks = createAsyncThunk(
 export const removeTask = createAsyncThunk(
 	'taskApp/task/removeTask',
 	async (id, { dispatch, getState }) => {
-		const response = await axios.delete(url + id + '/');
-		const data = await response.data;
-		if (data) return id;
+		return await axios.delete(url + id + '/')
+			.then((response) => {
+				console.info(response)
+				return id;
+			})
+			.catch((response) => {
+				console.error(response)
+			})
 	}
 );
 

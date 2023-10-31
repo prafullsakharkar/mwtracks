@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import history from "@/history";
-import Typography from '@mui/material/Typography';
+import {Typography, Box, Button} from '@mui/material';
+import SvgIcon from '@/components/core/SvgIcon';
 import format from 'date-fns/format';
 import { useParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
@@ -141,6 +142,33 @@ function NoteList(props) {
 			openNewDialog={openNewNoteDialog}
 			removeEntities={removeNotes}
 			openMultipleDialog={openMultipleNoteDialog}
+			renderTopToolbarCustomActions={({ table }) => (
+				<Box sx={{ display: 'flex', gap: '1rem', p: '4px' }}>
+					<Button
+						color="secondary"
+						onClick={(ev) => {
+							ev.stopPropagation();
+							dispatch(openNewNoteDialog());
+						}}
+						variant="contained"
+					>
+						<SvgIcon size={20} className="mr-8">heroicons-outline:plus</SvgIcon>
+						Create
+					</Button>
+					<Button
+						color="error"
+						disabled={!(table.getIsSomeRowsSelected() || table.getIsAllRowsSelected())}
+						onClick={() => {
+							const ids = table.getSelectedRowModel().rows.map(row => row.original.id)
+							dispatch(removeNotes(ids));
+						}}
+						variant="contained"
+					>
+						<SvgIcon size={20} className="mr-8">heroicons-outline:trash</SvgIcon>
+						Delete
+					</Button>
+				</Box>
+			)}
 		/>
 	);
 }
