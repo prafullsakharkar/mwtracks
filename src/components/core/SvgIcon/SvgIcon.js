@@ -47,7 +47,7 @@ const SvgIcon = forwardRef((props, ref) => {
             sx={sx}
             color={color}
           >
-            <use xlinkHref={`assets/icons/${iconPath}`} />
+            <use xlinkHref={`static/icons/${iconPath}`} />
           </Root>
         )}
       </>

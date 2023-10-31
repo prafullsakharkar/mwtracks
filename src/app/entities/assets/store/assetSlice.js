@@ -4,7 +4,7 @@ import { confirmAlert } from 'react-confirm-alert';
 import 'react-confirm-alert/src/react-confirm-alert.css';
 import { showMessage } from '@/stores/core/messageSlice';
 
-const url = '/api/v1/entity/assets/';
+const url = '/api/v1/entity/static/';
 
 export const getAssets = createAsyncThunk(
 	'assetApp/asset/getAsset',
@@ -12,7 +12,7 @@ export const getAssets = createAsyncThunk(
 		const uid = queryParams?.uid
 		const entity = queryParams?.entity
 
-		const endPoint = (entity && uid) ? '/api/v1/entity/' + entity + 's/' + uid + '/assets/' : url
+		const endPoint = (entity && uid) ? '/api/v1/entity/' + entity + 's/' + uid + '/static/' : url
 
 		const params = { ...queryParams }
 		delete params?.uid

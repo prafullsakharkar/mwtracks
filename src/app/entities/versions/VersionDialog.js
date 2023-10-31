@@ -249,7 +249,7 @@ function VersionDialog(props) {
 			fullWidth
 			maxWidth="xs"
 		>
-			<AppBar position="static" className="shadow-md">
+			<AppBar position="assets" className="shadow-md">
 				<Toolbar className="flex w-full justify-between">
 					<Typography variant="subtitle1" color="inherit">
 						{versionDialog.type === 'new' ? 'New Version' : versionDialog.type === 'multiple' ? 'Multiple Versions' : 'Edit Version'}

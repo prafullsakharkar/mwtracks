@@ -20,9 +20,9 @@ function OverviewHeader(props) {
     <div className="flex flex-col">
       <img
         className="h-160 object-cover w-full"
-        src="assets/images/cover/entity_cover.jpg"
+        src="static/images/cover/entity_cover.jpg"
       />
-      {/* <video width="100%" height="240" src="static/images/pages/profile/cover.mp4" controls>
+      {/* <video width="100%" height="240" src="assets/images/pages/profile/cover.mp4" controls>
               Your browser does not support the video tag.
           </video>  */}
 
@@ -32,7 +32,7 @@ function OverviewHeader(props) {
             <Avatar
               sx={{ borderColor: 'background.paper' }}
               className="ml-16 w-160 h-128 border-4 rounded-16"
-              src={data?.thumbnail || "assets/images/thumbnail/no_entity_thumbnail.jpg"}
+              src={data?.thumbnail || "static/images/thumbnail/no_entity_thumbnail.jpg"}
             />
           </motion.div>
         </div>

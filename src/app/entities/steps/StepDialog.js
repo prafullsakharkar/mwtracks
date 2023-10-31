@@ -296,7 +296,7 @@ function StepDialog(props) {
 			fullWidth
 			maxWidth={stepDialog.type.startsWith('csv') ? "md" : "xs"}
 		>
-			<AppBar position="static" className="shadow-md">
+			<AppBar position="assets" className="shadow-md">
 				<Toolbar className="flex w-full justify-between">
 					<Typography variant="subtitle1" color="inherit">
 						{
